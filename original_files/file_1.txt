@@ -1,0 +1,35 @@
+BDE_MISSAO_ARTEMIS - LOG FILE
+
+[2025-10-16 12:03:11] STATUS: OK - Módulo de comunicação ativo
+[2025-10-16 12:03:14] TELEMETRIA: Temperatura do reator 243K
+[2025-10-16 12:03:18] TELEMETRIA: Pressão do compartimento 0.8 bar
+[2025-10-16 12:03:21] SINAL: Forte - 98%
+[2025-10-16 12:03:25] ERRO 404 - Pacote de dados perdido no canal A
+[2025-10-16 12:03:14] ERRO 404 - Pacote de dados perdido no canal A
+[2025-10-16 12:04:02] TELEMETRIA: Corrente elétrica 3.1A
+[2025-10-16 12:03:35] STATUS: OK - Reajuste de rota concluído
+[2025-10-16 12:03:39] TELEMETRIA: Radiação cósmica 0.021 mSv/s
+[2025-10-16 12:03:42] ALERTA: Desvio de orientação detectado (Δθ = 2.3º)
+[2025-10-16 12:03:47] STATUS: OK - Correção automática executada
+[2025-10-16 12:03:47] STATUS: OK - Correção automática executada
+[2025-10-16 12:03:52] SINAL: Fraco - 41%
+[2025-10-16 12:03:56] ERRO 504 - Latência crítica na transmissão
+[2025-10-16 12:04:02] TELEMETRIA: Temperatura do reator 265K
+[2025-10-16 12:04:05] TELEMETRIA: Pressão do compartimento 0.7 bar
+[2025-10-16 12:04:08] ALERTA: Pico de radiação acima do limite seguro
+[2025-10-16 12:04:08] ALERTA: Pico de radiação acima do limite seguro
+[2025-10-16 12:04:12] STATUS: OK - Escudos ajustados
+[2025-10-16 12:04:15] SINAL: Restabelecido - 88%
+[2025-10-16 12:04:18] TELEMETRIA: Corrente elétrica 3.0A
+[2025-10-16 12:04:21] STATUS: OK - Módulo de dados sincronizado
+[2025-10-16 12:04:21] STATUS: OK - Módulo de dados sincronizado
+[2025-10-16 12:04:25] LOG_CORROMPIDO#@!DATA_MISSING
+[2025-10-16 12:04:30] TELEMETRIA: Pressão do compartimento 0.9 bar
+[2025-10-16 12:04:34] ERRO 301 - Redirecionamento inesperado no barramento
+[2025-10-16 12:04:39] TELEMETRIA: Radiação cósmica 0.019 mSv/s
+[2025-10-16 12:04:45] STATUS: OK - Missão em andamento nominal
+
+
+
+
+
