@@ -1,6 +1,6 @@
 # Terminal Mission Simulator
 
-Script para terminal Linux que simula um sistema de diagnóstico espacial (SRDI) para a missão Artemis. Foi desenvolvido no Ubuntu, como prática do curso "Terminal: aprenda comandos para executar tarefas" da Alura.
+Script para terminal Linux que simula um sistema de diagnóstico espacial (SRDI) para a missão Artemis. Foi desenvolvido no Ubuntu, como prática do curso "_Terminal: aprenda comandos para executar tarefas_" da Alura.
 
 ## 🚀 Funcionalidades
 
@@ -14,7 +14,7 @@ Script para terminal Linux que simula um sistema de diagnóstico espacial (SRDI)
 Execute o script no terminal:
 
 ```bash
-./script.sh
+bash script.sh
 ```
 
 Escolha uma opção do menu:
