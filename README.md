@@ -1,44 +1,56 @@
 # Terminal Mission Simulator
 
-Script para terminal Linux que simula um sistema de diagnóstico espacial (SRDI) para a missão Artemis. Foi desenvolvido no Ubuntu, como prática do curso "_Terminal: aprenda comandos para executar tarefas_" da Alura.
+An interactive Bash script that pretends to be a spacecraft diagnostics system (SRDI) for the
+Artemis mission. Underneath it is `cat`, `wc` and `grep` over a sample log file — the mission
+framing is flavor, not function.
 
-## 🚀 Funcionalidades
+Written on Ubuntu as practice for the Alura course
+"_Terminal: aprenda comandos para executar tarefas_". The interface is in Portuguese.
 
-- Visualização do arquivo de logs
-- Diagnóstico de integridade de dados
-- Relatório de erros e anomalias
-- Interface interativa com animações
+## What it does
 
-## 🎯 Como Usar
+On startup it plays a fake handshake — secure link, data transfer, processing — and then opens a
+`select` menu:
 
-Execute o script no terminal:
+| Option                       | What actually runs                                                  |
+| ---------------------------- | ------------------------------------------------------------------- |
+| `Visualizar logs`            | `cat` over the mission log                                          |
+| `Diagnóstico`                | `wc`, reported as a "data integrity check"                          |
+| `Detectar erros e anomalias` | `grep -i` for `erro`, `alerta` and `log_corrompido`, matches in red |
+| `Sair`                       | closes the session                                                  |
+
+Every step is dressed up with spinners, a typewriter effect and ANSI colors.
+
+## Running it
 
 ```bash
-bash script.sh
+git clone https://github.com/gabrielframeschi/terminal-mission-simulator.git
+cd terminal-mission-simulator
+./script.sh
 ```
 
-Escolha uma opção do menu:
+It can be run from any directory — the script resolves the log file relative to its own location.
 
-- **Visualizar logs**: Mostra logs da missão
-- **Diagnóstico**: Analisa integridade dos dados
-- **Detectar erros**: Identifica problemas nos logs
-- **Sair**: Encerra o sistema
+## Requirements
 
-## 📁 Estrutura
+- Bash 4.2 or newer
+- A terminal with ANSI color support
+- `tput`, `cat`, `wc`, `grep` — standard on any Linux or macOS install
 
-```bash
-├── script.sh         # Script principal
+## Layout
+
+```
+├── script.sh          # the whole program
 ├── original_files/
-│   └── file_1.txt    # Logs da missão Artemis
-└── README.md
+│   └── file_1.txt     # sample Artemis mission log
+├── README.md
+└── LICENSE
 ```
 
-## 🛠️ Requisitos
+## License
 
-- Terminal com cores ANSI
-- Bash shell
-- Comandos Unix básicos (`grep`, `wc`, `cat`)
+Released under the [MIT License](LICENSE).
 
 ---
 
-*Projeto criado para fins educacionais e de entretenimento, simulando sistemas de missões espaciais.*
+_Educational project: a terminal playground, not a real diagnostics tool._
