@@ -6,17 +6,17 @@ CYAN=$(tput setaf 6)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-# Resolve o log a partir da pasta do próprio script, para que ele possa ser
-# executado de qualquer diretório.
+# Resolve the log file from the script's own directory, so it can be run from
+# anywhere.
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 FILE_PATH="$SCRIPT_DIR/original_files/file_1.txt"
 
 SPIN_CHARS='|/-\'
 
-# FUNÇÕES DE ANIMAÇÃO
+# ANIMATION FUNCTIONS
 
 spinner() {
-	local message="${1:-Processando...}"
+	local message="${1:-Processing...}"
 	local duration="${2:-2}"
 	local delay=0.1
 
@@ -28,7 +28,7 @@ spinner() {
 		sleep "$delay"
 	done
 
-	printf "\r\033[K${GREEN}%s concluído!${RESET}\n" "$message"
+	printf "\r\033[K${GREEN}%s done!${RESET}\n" "$message"
 }
 
 type_text() {
@@ -42,7 +42,7 @@ type_text() {
 	echo
 }
 
-# Gira o spinner enquanto o processo informado estiver em execução.
+# Spins while the given process is still running.
 wait_spinner() {
 	local message="$1"
 	local done_message="$2"
@@ -58,7 +58,7 @@ wait_spinner() {
 	printf "\r\033[K${GREEN}✔ %s${RESET}\n" "$done_message"
 }
 
-# SIMULAÇÕES
+# SIMULATIONS
 
 view_log() {
 	echo -e "${CYAN}"
@@ -67,34 +67,34 @@ view_log() {
 	echo
 }
 
-diagnostico() {
-	spinner "Iniciando diagnóstico de integridade..."
+run_diagnostics() {
+	spinner "Running integrity diagnostics..."
 	result_wc=$(wc "$FILE_PATH")
-	# Exibe o caminho relativo em vez do absoluto.
+	# Show the relative path instead of the absolute one.
 	result_wc="${result_wc/$SCRIPT_DIR\//}"
 	type_text "$result_wc"
 	echo
 }
 
 filter_errors() {
-	spinner "Detectando anomalias..."
-	spinner "Extraindo logs detectados..."
+	spinner "Detecting anomalies..."
+	spinner "Extracting matching entries..."
 
 	local result_scan
-	result_scan=$(grep -E --color=always -i "erro|alerta|log_corrompido" "$FILE_PATH")
+	result_scan=$(grep -E --color=always -i "error|alert|corrupted_log" "$FILE_PATH")
 
 	if [[ -z "$result_scan" ]]; then
-		echo "${GREEN}Nenhuma anomalia detectada.${RESET}"
+		echo "${GREEN}No anomalies detected.${RESET}"
 	else
 		type_text "$result_scan"
 	fi
 	echo
 }
 
-fechar_srdi() {
+close_sdps() {
 	echo -e "${CYAN}"
-	spinner "Encerrando comunicação..."
-	echo "Sistema SRDI finalizado"
+	spinner "Closing link..."
+	echo "SDPS system shut down"
 	echo -e "${RESET}"
 	echo
 }
@@ -104,48 +104,48 @@ fechar_srdi() {
 ##############################################################
 
 if [[ ! -f "$FILE_PATH" ]]; then
-	echo "${RED}Arquivo de logs não encontrado: ${FILE_PATH}${RESET}" >&2
+	echo "${RED}Log file not found: ${FILE_PATH}${RESET}" >&2
 	exit 1
 fi
 
 clear
 
 echo "======================================================"
-echo "===== Diagnóstico e Processamento SRDI - v2.13.7 ====="
+echo "====== SDPS Diagnostics and Processing - v2.13.7 ====="
 echo "======================================================"
 echo
 (sleep 2) & wait_spinner \
-	"Estabelecendo conexão segura com o ${RESET}${YELLOW}BDE_Missao_Artemis${RESET}${CYAN}" \
-	"Conexão segura estabelecida com o ${RESET}${YELLOW}BDE_Missao_Artemis" $!
-(sleep 2) & wait_spinner "Transferindo dados..." "Transferência concluída" $!
-(sleep 1) & wait_spinner "Processando dados recebidos..." "Processamento concluído" $!
+	"Opening secure link to ${RESET}${YELLOW}BDE_Mission_Artemis${RESET}${CYAN}" \
+	"Secure link established with ${RESET}${YELLOW}BDE_Mission_Artemis" $!
+(sleep 2) & wait_spinner "Transferring data..." "Transfer complete" $!
+(sleep 1) & wait_spinner "Processing received data..." "Processing complete" $!
 echo
 
-PS3="${YELLOW}➡ Escolha uma opção: ${RESET}"
-options=("Visualizar logs" "Diagnóstico" "Detectar erros e anomalias" "Sair")
+PS3="${YELLOW}➡ Choose an option: ${RESET}"
+options=("View logs" "Diagnostics" "Detect errors and anomalies" "Exit")
 
 select opt in "${options[@]}"; do
 	case $opt in
-		"Visualizar logs")
+		"View logs")
 			echo
 			view_log
 			;;
-		"Diagnóstico")
+		"Diagnostics")
 			echo
-			diagnostico
+			run_diagnostics
 			;;
-		"Detectar erros e anomalias")
+		"Detect errors and anomalies")
 			echo
 			filter_errors
 			;;
-		"Sair")
+		"Exit")
 			echo
-			fechar_srdi
+			close_sdps
 			break
 			;;
 		*)
 			echo
-			echo "Opção inválida. Tente novamente."
+			echo "Invalid option. Try again."
 			;;
 	esac
 done
